@@ -1,0 +1,10 @@
+build/
+public/
+dist/
+src/utils/commons/typeGuardsUtils.ts
+**/node_modules/
+*.config.js
+*.config.cjs
+*.config.ts
+*.local
+.*
