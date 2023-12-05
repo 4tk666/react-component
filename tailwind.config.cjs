@@ -23,7 +23,7 @@ module.exports = {
           7: '#e6e8eb',
         },
         green: {
-          1: '#00a3a1',
+          1: '#005c59',
           2: {
             1: '#3bcaa8',
             2: '#1e8cb2',
@@ -62,20 +62,6 @@ module.exports = {
           5: '#050c13',
         },
       },
-      // NOTE: グラデーションカラーはかなり複雑で長くなるのでこちらにまとめる
-      // themeから上記で定義したカラーを使用できる。「colors.green.2.1」であれば→「#3bcaa9」のこと
-      backgroundImage: (theme) => ({
-        'button-primary-regular': `linear-gradient(180deg,  ${theme('colors.green.1')} 0%, ${theme(
-          'colors.green.1',
-        )} 100%)`,
-        'button-primary-regular-hover': `linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #00A3A0`,
-        'gradient-button-primary': `linear-gradient(180deg,  ${theme(
-          'colors.green.2.1',
-        )} 0%, ${theme('colors.green.2.2')} 100%)`,
-        'gradient-button-primary-hover': `linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(180deg, ${theme(
-          'colors.green.2.1',
-        )} 0%, ${theme('colors.green.2.2')} 100%)`,
-      }),
       boxShadow: {
         sheet: '0px 2px 10px rgba(47, 71, 82, 0.15)',
         button: '0px 4px 10px rgba(48, 102, 121, 0.4)',
