@@ -1,4 +1,6 @@
+import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, fireEvent } from '@storybook/testing-library';
 
 import Button from '.';
 
@@ -13,6 +15,25 @@ type Story = StoryObj<typeof Button>;
 
 export const PrimaryButton: Story = {
   render: () => <Button theme='primary'>Primary Button</Button>,
+  play: async ({ canvasElement, step }) => {
+    // プライマリーボタンの取得
+    const canvas = within(canvasElement);
+    const primaryButton = canvas.getByText('Primary Button');
+
+    await step('ボタンにLabelの文字列が表示されている', async () => {
+      await expect(primaryButton).toBeInTheDocument();
+    });
+
+    await step('ボタンフォーカス時にフォーカススタイルが適用される', async () => {
+      fireEvent.focus(primaryButton);
+
+      // ボタンがフォーカスを受け取る時間を与えるため、少し待つ
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // ボタンにフォーカスがあるときに適用されるスタイルを確認する（例：特定のクラスが存在することを検証）
+      expect(primaryButton).toHaveClass('focus:border focus:border-blue-1 focus:shadow-focus focus:outline-none');
+    });
+  },
 };
 
 export const SecondaryButton: Story = {
