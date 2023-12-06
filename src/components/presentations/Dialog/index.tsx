@@ -6,18 +6,17 @@ type Props = {
   open: boolean;
   title: string;
   subTitle?: string;
-  contentClassName?: string;
+  panelClassName?: string;
   children: React.ReactNode;
   onClose: () => void;
 };
 
-// NOTE: カラーコードなどの数値を一部ベタ打ちしてるので使用する際は調整する
-const Dialog = ({ open, title, children, subTitle, contentClassName = '', onClose }: Props) => {
+const Dialog = ({ open, title, children, subTitle = '', panelClassName = '', onClose }: Props) => {
   const focusElementRef = useRef(null);
 
   return (
     <HuiDialog open={open} onClose={onClose} initialFocus={focusElementRef}>
-      <div className={clsx('bg-modalBack fixed inset-0 z-modalBack opacity-70')} />
+      <div className={clsx('fixed inset-0 z-modalBack bg-black opacity-70')} aria-hidden='true' />
 
       <HuiDialog.Panel>
         <div
@@ -26,7 +25,7 @@ const Dialog = ({ open, title, children, subTitle, contentClassName = '', onClos
             'p-[40px] where:max-w-[600px]',
             'rounded-modal',
             'bg-white',
-            contentClassName,
+            panelClassName,
           )}
         >
           <HuiDialog.Title

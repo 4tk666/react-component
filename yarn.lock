@@ -2116,6 +2116,13 @@
     memoizerific "^1.11.3"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-console@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-console/-/addon-console-2.0.0.tgz#aaed50ab3b183a468ab272f9aefcb3ca6278728d"
+  integrity sha512-VA/lzmIC3qKYb+UYeqpFFc/JqstWe8gthz2dBmvanCobyw3pPnHmdWd55febJcmWWNMd5UxkwhMVWlb17yPTXw==
+  dependencies:
+    "@storybook/global" "^5.0.0"
+
 "@storybook/addon-controls@7.6.3":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@storybook/addon-controls/-/addon-controls-7.6.3.tgz#1ade53748b04c37d9b604f76e1da82dfe4721c0b"
