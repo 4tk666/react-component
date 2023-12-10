@@ -1,6 +1,6 @@
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, fireEvent, getByTestId } from '@storybook/testing-library';
+import { within, fireEvent } from '@storybook/testing-library';
 
 import { useState } from 'react';
 import Button from '../Button';
@@ -85,7 +85,7 @@ export const Dialog: Story = {
       }
     });
 
-    await step('モーダルが開いた時に、モーダル内の要素にフォーカスが当たる要素にフォーカスが当たっていないこと', async () => {
+    await step('モーダルが開いた時に、モーダル内の要素にフォーカスが当たる要素にフォーカスが当たっていること', async () => {
       fireEvent.click(openButton);
       // モーダルが開くのを待つために少し時間を置く
       await new Promise((resolve) => setTimeout(resolve, 300));
@@ -99,7 +99,7 @@ export const Dialog: Story = {
 
         const closeButton = dialogCanvas.getByText('close');
 
-        expect(closeButton).not.toHaveFocus();
+        expect(closeButton).toHaveFocus();
       }
     });
   },

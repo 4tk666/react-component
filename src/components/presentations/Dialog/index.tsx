@@ -1,6 +1,5 @@
 import { Dialog as HuiDialog } from '@headlessui/react';
 import clsx from 'clsx';
-import { useRef } from 'react';
 
 type Props = {
   open: boolean;
@@ -12,10 +11,8 @@ type Props = {
 };
 
 const Dialog = ({ open, title, children, subTitle = '', panelClassName = '', onClose }: Props) => {
-  const focusElementRef = useRef(null);
-
   return (
-    <HuiDialog open={open} onClose={onClose} initialFocus={focusElementRef}>
+    <HuiDialog open={open} onClose={onClose}>
       <div className={clsx('fixed inset-0 z-modalBack bg-black opacity-70')} aria-hidden='true' />
 
       <HuiDialog.Panel>
@@ -38,10 +35,6 @@ const Dialog = ({ open, title, children, subTitle = '', panelClassName = '', onC
             )}
           </HuiDialog.Title>
           {children}
-
-          {/* NOTE: モーダルが開かれたときに中の要素にFocusが当たらないように設定 */}
-          {/* https://headlessui.com/react/dialog#managing-initial-focus */}
-          <div ref={focusElementRef} />
         </div>
       </HuiDialog.Panel>
     </HuiDialog>
