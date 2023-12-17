@@ -37,7 +37,7 @@ const RadioGroup = <T extends string | number>({
             key={item.value}
             value={item.value}
             className={clsx(
-              'focus-visible:rounded-focus focus-visible:border focus-visible:border-blue-1 focus-visible:outline-none',
+              'focus-visible:isolate focus-visible:rounded-focus focus-visible:shadow-focus focus-visible:outline-none',
             )}
             disabled={item.disabled}
           >

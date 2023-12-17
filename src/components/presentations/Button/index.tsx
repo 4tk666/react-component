@@ -12,7 +12,7 @@ const Button = ({ children, theme, size = 'regular', disabled, ...props }: Props
     disabled={disabled}
     className={clsx(
       'font-bold',
-      'hover:shadow-button focus:border focus:border-blue-1 focus:shadow-focus focus:outline-none',
+      'hover:shadow-button focus-visible:isolate focus-visible:rounded-focus focus-visible:shadow-focus focus-visible:outline-none',
       theme === 'primary' && 'bg-green-1 text-white',
       theme === 'secondary' && 'bg-background-2 text-gray-1',
       theme === 'outlined' && 'border border-green-1 text-green-1 hover:bg-background-2',

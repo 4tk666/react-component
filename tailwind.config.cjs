@@ -8,6 +8,18 @@ module.exports = {
       fontFamily: {
         body: ['Rubik', 'メイリオ', 'Noto Sans JP', 'sans-serif'],
       },
+      fontSize: {
+        'title-20': ['20px', { fontWeight: '700' }],
+        'title-18': ['18px', { fontWeight: '700' }],
+        'title-16': ['16px', { fontWeight: '700' }],
+        'title-14': ['14px', { fontWeight: '700' }],
+        'title-12': ['12px', { fontWeight: '700' }],
+        'title-10': ['10px', { fontWeight: '700' }],
+        'text-16': ['16px', { fontWeight: '400' }],
+        'text-14': ['14px', { fontWeight: '400' }],
+        'text-12': ['12px', { fontWeight: '400' }],
+        'text-10': ['10px', { fontWeight: '400' }],
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -67,7 +79,7 @@ module.exports = {
         button: '0px 4px 10px rgba(48, 102, 121, 0.4)',
         popup: '0px 6px 20px rgba(47, 71, 82, 0.25)',
         overlay: '0px -10px 15px rgba(26, 73, 88, 0.1)',
-        focus: '0px 2px 10px rgba(91, 105, 239, 0.6)',
+        focus: 'rgb(255, 255, 255) 0px 0px 0px 2px, rgb(88, 154, 233) 0px 0px 0px 4px',
       },
       borderRadius: {
         nav: '26px',

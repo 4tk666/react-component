@@ -31,7 +31,9 @@ export const PrimaryButton: Story = {
       await new Promise((resolve) => setTimeout(resolve, 100));
 
       // ボタンにフォーカスがあるときに適用されるスタイルを確認する（例：特定のクラスが存在することを検証）
-      expect(primaryButton).toHaveClass('focus:border focus:border-blue-1 focus:shadow-focus focus:outline-none');
+      expect(primaryButton).toHaveClass(
+        'focus-visible:isolate focus-visible:rounded-focus focus-visible:shadow-focus focus-visible:outline-none',
+      );
     });
   },
 };
