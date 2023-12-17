@@ -41,8 +41,8 @@ export const RadioGroup: Story = {
     const canvas = within(canvasElement);
 
     await step('itemsで渡した要素がラジオボタンとして表示されること', async () => {
-      const dialogTitle = canvas.getByText('ラジオ1');
-      expect(dialogTitle).toBeInTheDocument();
+      const radio1Title = canvas.getByText('ラジオ1');
+      expect(radio1Title).toBeInTheDocument();
     });
 
     await step('ラジオボタンをクリック時にチェックされること', async () => {
