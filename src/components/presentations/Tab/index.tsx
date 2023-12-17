@@ -19,7 +19,7 @@ type Props = {
 const Tab = ({ items, panelClassName = '', selectedIndex, setSelectedIndex }: Props) => {
   return (
     <HuiTab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
-      <HuiTab.List className='flex'>
+      <HuiTab.List className={clsx('flex')}>
         {items.map((item) => (
           <HuiTab
             key={item.value}
@@ -43,7 +43,14 @@ const Tab = ({ items, panelClassName = '', selectedIndex, setSelectedIndex }: Pr
       </HuiTab.List>
       <HuiTab.Panels className={clsx('border-t border-gray-5', 'where:py-[25px]', panelClassName)}>
         {items.map((item) => (
-          <HuiTab.Panel key={item.value}>{item.children}</HuiTab.Panel>
+          <HuiTab.Panel
+            key={item.value}
+            className={clsx(
+              'focus-visible:isolate focus-visible:rounded-focus focus-visible:shadow-focus focus-visible:outline-none',
+            )}
+          >
+            {item.children}
+          </HuiTab.Panel>
         ))}
       </HuiTab.Panels>
     </HuiTab.Group>
