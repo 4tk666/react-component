@@ -85,6 +85,7 @@ module.exports = {
         nav: '26px',
         modal: '18px',
         card: '8px',
+        overlay: '20px',
         input: '6px',
         focus: '2px',
       },
@@ -95,6 +96,7 @@ module.exports = {
         fixed: 1030,
         modalBack: 1040,
         modalContent: 1050,
+        toast: 1055,
         tooltip: 1060,
       },
       keyframes: {
