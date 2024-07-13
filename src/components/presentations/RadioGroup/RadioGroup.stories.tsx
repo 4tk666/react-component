@@ -1,7 +1,6 @@
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, fireEvent, getAllByRole } from '@storybook/testing-library';
-
+import { within, userEvent, getAllByRole } from '@storybook/testing-library';
 import { useState } from 'react';
 import ComRadioGroup, { RadioGroupItem } from '.';
 
@@ -47,14 +46,14 @@ export const RadioGroup: Story = {
 
     await step('ラジオボタンをクリック時にチェックされること', async () => {
       const radioGroups = getAllByRole(canvasElement, 'radio');
+      const radioGroupFirstItem = radioGroups.at(0);
       const radioGroupSecondItem = radioGroups.at(1);
 
-      if (!!radioGroupSecondItem) {
-        fireEvent.click(radioGroupSecondItem);
-
-        await new Promise((resolve) => setTimeout(resolve, 300));
+      if (!!radioGroupSecondItem && !!radioGroupFirstItem) {
+        await userEvent.click(radioGroupSecondItem);
 
         expect(radioGroupSecondItem.getAttribute('aria-checked')).toEqual('true');
+        await userEvent.click(radioGroupFirstItem);
       }
     });
 
@@ -64,16 +63,16 @@ export const RadioGroup: Story = {
       const radioGroupSecondItem = radioGroups.at(1);
 
       if (!!radioGroupFirstItem && !!radioGroupSecondItem) {
-        radioGroupFirstItem.focus();
+        await userEvent.click(radioGroupFirstItem);
 
-        await new Promise((resolve) => setTimeout(resolve, 300));
+        expect(radioGroupFirstItem.getAttribute('aria-checked')).toEqual('true');
 
         // 右矢印で移動
-        fireEvent.keyDown(radioGroupFirstItem, { key: 'ArrowRight', keyCode: 39 });
-
-        await new Promise((resolve) => setTimeout(resolve, 300));
+        await userEvent.keyboard('[ArrowRight]');
 
         expect(radioGroupSecondItem.getAttribute('aria-checked')).toEqual('true');
+
+        await userEvent.click(radioGroupFirstItem);
       }
     });
   },

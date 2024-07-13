@@ -1,7 +1,6 @@
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, fireEvent, getAllByRole } from '@storybook/testing-library';
-
+import { within, getAllByRole, userEvent } from '@storybook/testing-library';
 import { useState } from 'react';
 import ComTab, { TabItem } from '.';
 
@@ -53,9 +52,7 @@ export const Tab: Story = {
       const tabItem2 = tabs.at(1);
 
       if (!!tabItem2) {
-        fireEvent.click(tabItem2);
-
-        await new Promise((resolve) => setTimeout(resolve, 300));
+        await userEvent.click(tabItem2);
 
         expect(tabItem2.getAttribute('aria-selected')).toEqual('true');
         expect(canvas.getByText('タブコンテント2')).toBeInTheDocument();
@@ -68,15 +65,11 @@ export const Tab: Story = {
       const tabItem2 = tabs.at(1);
 
       if (!!tabItem1 && !!tabItem2) {
-        fireEvent.click(tabItem1);
-        tabItem1.focus();
+        await userEvent.click(tabItem1);
+        expect(tabItem1.getAttribute('aria-selected')).toEqual('true');
 
-        await new Promise((resolve) => setTimeout(resolve, 300));
-
-        // // 右矢印で移動
-        fireEvent.keyDown(tabItem1, { key: 'ArrowRight', keyCode: 39 });
-
-        await new Promise((resolve) => setTimeout(resolve, 300));
+        // 右矢印で移動
+        await userEvent.keyboard('[ArrowRight]');
 
         expect(tabItem2.getAttribute('aria-selected')).toEqual('true');
       }
