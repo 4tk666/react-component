@@ -1,7 +1,6 @@
 import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, fireEvent } from '@storybook/testing-library';
-
+import { within , userEvent } from '@storybook/testing-library';
 import Button from '.';
 
 const meta = {
@@ -25,15 +24,13 @@ export const PrimaryButton: Story = {
     });
 
     await step('ボタンフォーカス時にフォーカススタイルが適用される', async () => {
-      fireEvent.focus(primaryButton);
-
-      // ボタンがフォーカスを受け取る時間を与えるため、少し待つ
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      await userEvent.tab();
 
       // ボタンにフォーカスがあるときに適用されるスタイルを確認する（例：特定のクラスが存在することを検証）
       expect(primaryButton).toHaveClass(
         'focus-visible:isolate focus-visible:rounded-focus focus-visible:shadow-focus focus-visible:outline-none',
       );
+      expect(primaryButton).toHaveFocus();
     });
   },
 };
