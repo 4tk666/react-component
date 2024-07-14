@@ -1,6 +1,5 @@
-import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, getAllByRole, userEvent } from '@storybook/testing-library';
+import { expect, within, getAllByRole, userEvent } from '@storybook/test';
 import { useState } from 'react';
 import ComTab, { TabItem } from '.';
 

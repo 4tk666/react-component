@@ -1,8 +1,7 @@
-import { expect } from '@storybook/jest';
-import { Meta, StoryObj } from "@storybook/react";
-import { within, userEvent } from "@storybook/testing-library";
-import { useState } from "react";
-import Button from "../Button";
+import { Meta, StoryObj } from '@storybook/react';
+import { expect, within, userEvent } from '@storybook/test';
+import { useState } from 'react';
+import Button from '../Button';
 import ComDialog from '.';
 
 const meta = {

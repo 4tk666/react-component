@@ -1,11 +1,22 @@
-import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within , userEvent } from '@storybook/testing-library';
+import { expect, within, userEvent } from '@storybook/test';
 import Button from '.';
 
-const meta = {
+const meta: Meta<typeof Button> = {
   title: 'Button',
   component: Button,
+  argTypes: {
+    theme: {
+      control: 'radio',
+      options: ['primary', 'secondary', 'outlined'],
+    },
+    children: {
+      control: 'text',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -13,7 +24,11 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const PrimaryButton: Story = {
-  render: () => <Button theme='primary'>Primary Button</Button>,
+  args: {
+    theme: 'primary',
+    children: 'Primary Button',
+  },
+  render: (args) => <Button {...args} />,
   play: async ({ canvasElement, step }) => {
     // プライマリーボタンの取得
     const canvas = within(canvasElement);
@@ -26,7 +41,6 @@ export const PrimaryButton: Story = {
     await step('ボタンフォーカス時にフォーカススタイルが適用される', async () => {
       await userEvent.tab();
 
-      // ボタンにフォーカスがあるときに適用されるスタイルを確認する（例：特定のクラスが存在することを検証）
       expect(primaryButton).toHaveClass(
         'focus-visible:isolate focus-visible:rounded-focus focus-visible:shadow-focus focus-visible:outline-none',
       );
@@ -36,9 +50,17 @@ export const PrimaryButton: Story = {
 };
 
 export const SecondaryButton: Story = {
-  render: () => <Button theme='secondary'>Secondary Button</Button>,
+  args: {
+    theme: 'secondary',
+    children: 'Secondary Button',
+  },
+  render: (args) => <Button {...args} />,
 };
 
 export const OutlinedButton: Story = {
-  render: () => <Button theme='outlined'>Outlined Button</Button>,
+  args: {
+    theme: 'outlined',
+    children: 'Outlined Button',
+  },
+  render: (args) => <Button {...args} />,
 };

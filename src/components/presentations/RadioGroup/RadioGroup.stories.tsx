@@ -1,6 +1,5 @@
-import { expect } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, userEvent, getAllByRole } from '@storybook/testing-library';
+import { expect, within, userEvent, getAllByRole } from '@storybook/test';
 import { useState } from 'react';
 import ComRadioGroup, { RadioGroupItem } from '.';
 

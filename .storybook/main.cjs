@@ -6,16 +6,15 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-interactions',
     '@storybook/addon-console',
-    '@storybook/addon-mdx-gfm',
+    '@storybook/addon-actions',
+    '@storybook/addon-controls',
   ],
+
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
-  features: {
-    storyStoreV7: true,
-  },
-  docs: {
-    autodocs: true,
-  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
